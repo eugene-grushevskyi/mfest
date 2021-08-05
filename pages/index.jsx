@@ -95,9 +95,7 @@ export default function Home({ blocks }) {
 					</a>
 				</header>
 				
-				{ breakfaskFirst && <Breakfasts blocks={blocks} /> }
 				<MainList blocks={blocks} showMainLabel={breakfaskFirst} />
-				{ !breakfaskFirst && <Breakfasts blocks={blocks} /> }
 			</main>
 		</div>
 	);

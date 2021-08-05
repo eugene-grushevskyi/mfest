@@ -49,7 +49,7 @@ export default function MainList({ blocks, showMainLabel }) {
 				className={styles.backgroundFish}
 				{...getBlock(BlockNames.sandwiches)}
 			/>
-			<Additionals />
+			{/* <Additionals /> */}
 			<CategoryBlock
 				key={BlockNames.bowls}
 				className={styles.cardBlockBordered}

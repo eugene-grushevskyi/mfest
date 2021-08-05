@@ -8,6 +8,9 @@ export default function CategoryBlock({
 	className,
 	subCategories,
 }) {
+	if(!blockName) {
+		return null;
+	}
 	const hasSubCategories = !!subCategories && !!subCategories.length;
 	const product = (v) => (
 		<div className={styles.product} key={v._id}>

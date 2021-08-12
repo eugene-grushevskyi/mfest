@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
-import Breakfasts from '../components/Breakfasts';
-import MainList from '../components/MainList';
+import CategoryBlock from '../components/CategoryBlock'
 import useSWR from 'swr';
 import styles from '../styles/Home.module.css';
+import { BlockNames } from '../constants/blocks-names';
+import Additionals from "../components/Additionals";
 
 const trackEndpoint = '/api/user?zone=';
 const QR_SCAN_FREQUENCY_TIMEOUT = 60000; // 1 min
@@ -95,7 +96,98 @@ export default function Home({ blocks }) {
 					</a>
 				</header>
 				
-				<MainList blocks={blocks} showMainLabel={breakfaskFirst} />
+				{/*<MainList blocks={blocks} showMainLabel={breakfaskFirst} />*/}
+
+        <CategoryBlock
+          key={BlockNames.oysterBar}
+          {...{
+            ...blocks.find(
+              (block) => block.blockName === BlockNames.oysterBar
+            ),
+            className: styles.backgroundOyster,
+          }}
+        />
+        <CategoryBlock
+          key={BlockNames.cooledSeafood}
+          {...{
+            ...blocks.find(
+              (block) => block.blockName === BlockNames.cooledSeafood
+            ),
+          }}
+        />
+        <CategoryBlock {...({...blocks.find(block => block.blockName === BlockNames.tartar), className: styles.cardBlock})}/>
+
+        <CategoryBlock
+          key={BlockNames.salad}
+          {...{
+            ...blocks.find(
+              (block) => block.blockName === BlockNames.salad
+            ),
+          }}
+        />
+
+        <CategoryBlock
+          key={BlockNames.bowls}
+          {...{
+            ...blocks.find(
+              (block) => block.blockName === BlockNames.bowls
+            ),
+            className: styles.cardBlockBordered,
+          }}
+        />
+
+				<div className={styles.biliyNalyv}>
+					<header>
+          <Image
+            className={styles.logo}
+            priority={true}
+            src="/logo_BN.svg"
+            alt="Білий Налив"
+            width={350}
+            height={80}
+          />
+          <a
+            href={'https://www.instagram.com/biliy.nalyv.zt/'}
+            target={'_blank'}
+            rel="noreferrer"
+            className={styles.instagram}
+          >
+            <Image
+              priority={true}
+              src="/instagramBn.svg"
+              alt="Білий Налив"
+              width={16}
+              height={16}
+            />
+            <span className={styles.bnColor}>biliy.nalyv.zt</span>
+          </a>
+        </header>
+          <CategoryBlock
+            key={BlockNames.drinks}
+            {...{
+              ...blocks.find(
+                (block) => block.blockName === BlockNames.drinks
+              )
+            }}
+          />
+          <CategoryBlock
+            key={BlockNames.hotDog}
+            {...{
+              ...blocks.find(
+                (block) => block.blockName === BlockNames.hotDog
+              )
+            }}
+          />
+          <Additionals />
+          <CategoryBlock
+            key={BlockNames.pie}
+            {...{
+              ...blocks.find(
+                (block) => block.blockName === BlockNames.pie
+              )
+            }}
+          />
+				</div>
 			</main>
 		</div>
 	);
